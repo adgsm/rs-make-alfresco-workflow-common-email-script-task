@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="makecestwf:makeCommonEmailScriptTaskWorkflowModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+	<description>Make IT Common Email Script Task Workflow Model</description>
+	<author>Momcilo Dzunic</author>
+	<version>1.0</version>
+
+	<imports>
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<import uri="http://www.alfresco.org/model/bpm/1.0" prefix="bpm" />
+	</imports>
+
+	<namespaces>
+		<namespace uri="http://www.make.rs/model/workflow/common-email-script-task/1.0" prefix="makecestwf" />
+	</namespaces>
+
+	<types>
+		<type name="makecestwf:commonEmailScriptTask">
+			<title>Make IT generic workflow email script task</title>
+			<parent>bpm:startTask</parent>
+		</type>
+	</types>
+</model>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.make.rs/model/workflow/common-email-script-task/1.0">
+  <process id="commonEmailScriptTask" name="Common email script task" isExecutable="true">
+    <extensionElements>
+      <activiti:executionListener event="start" delegateExpression="${commonEmailScriptTaskInitializationVar}"></activiti:executionListener>
+    </extensionElements>
+    <startEvent id="startevent-common-email-script-task" name="Start" activiti:initiator="initiator" activiti:formKey="makecestwf:commonEmailScriptTask">
+      <extensionElements>
+        <activiti:executionListener event="start" delegateExpression="${commonEmailScriptTaskStartVar}"></activiti:executionListener>
+      </extensionElements>
+    </startEvent>
+    <serviceTask id="servicetask-check-prerequisites" name="Check prerequisites" activiti:delegateExpression="${commonEmailScriptTaskCheckPrerequisitesVar}"></serviceTask>
+    <endEvent id="endevent-common-email-script-task" name="End">
+      <extensionElements>
+        <activiti:executionListener event="start" delegateExpression="${commonEmailScriptTaskEndVar}"></activiti:executionListener>
+      </extensionElements>
+    </endEvent>
+    <sequenceFlow id="flow-start-to-check-prerequisites" sourceRef="startevent-common-email-script-task" targetRef="servicetask-check-prerequisites"></sequenceFlow>
+    <exclusiveGateway id="exclusivegateway-delay" name="Exclusive Gateway"></exclusiveGateway>
+    <intermediateCatchEvent id="timerintermediatecatchevent-send-email-delay" name="TimerCatchEvent">
+      <timerEventDefinition>
+        <timeDate>${makecestwf_sendDate}</timeDate>
+      </timerEventDefinition>
+    </intermediateCatchEvent>
+    <sequenceFlow id="flow-delay-to-send-email-delay" sourceRef="exclusivegateway-delay" targetRef="timerintermediatecatchevent-send-email-delay">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${makecestwf_sendDate != null}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow-check-prerequisites-to-proceed" sourceRef="servicetask-check-prerequisites" targetRef="exclusivegateway-delay"></sequenceFlow>
+    <serviceTask id="servicetask-send" name="Send Email" activiti:delegateExpression="${commonEmailScriptTaskSendVar}">
+      <extensionElements>
+        <activiti:executionListener event="start" delegateExpression="${commonEmailScriptTaskSendVar}"></activiti:executionListener>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow-delay-to-send" sourceRef="timerintermediatecatchevent-send-email-delay" targetRef="servicetask-send"></sequenceFlow>
+    <sequenceFlow id="flow-send-to-end" sourceRef="servicetask-send" targetRef="endevent-common-email-script-task"></sequenceFlow>
+    <sequenceFlow id="flow1" sourceRef="exclusivegateway-delay" targetRef="servicetask-send">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${makecestwf_sendDate == null}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_commonEmailScriptTask">
+    <bpmndi:BPMNPlane bpmnElement="commonEmailScriptTask" id="BPMNPlane_commonEmailScriptTask">
+      <bpmndi:BPMNShape bpmnElement="startevent-common-email-script-task" id="BPMNShape_startevent-common-email-script-task">
+        <omgdc:Bounds height="35.0" width="35.0" x="120.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="servicetask-check-prerequisites" id="BPMNShape_servicetask-check-prerequisites">
+        <omgdc:Bounds height="55.0" width="105.0" x="200.0" y="80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent-common-email-script-task" id="BPMNShape_endevent-common-email-script-task">
+        <omgdc:Bounds height="35.0" width="35.0" x="690.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway-delay" id="BPMNShape_exclusivegateway-delay">
+        <omgdc:Bounds height="40.0" width="40.0" x="370.0" y="87.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="timerintermediatecatchevent-send-email-delay" id="BPMNShape_timerintermediatecatchevent-send-email-delay">
+        <omgdc:Bounds height="35.0" width="35.0" x="460.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="servicetask-send" id="BPMNShape_servicetask-send">
+        <omgdc:Bounds height="55.0" width="105.0" x="540.0" y="80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow-start-to-check-prerequisites" id="BPMNEdge_flow-start-to-check-prerequisites">
+        <omgdi:waypoint x="155.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="200.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow-delay-to-send-email-delay" id="BPMNEdge_flow-delay-to-send-email-delay">
+        <omgdi:waypoint x="410.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="460.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow-check-prerequisites-to-proceed" id="BPMNEdge_flow-check-prerequisites-to-proceed">
+        <omgdi:waypoint x="305.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="370.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow-delay-to-send" id="BPMNEdge_flow-delay-to-send">
+        <omgdi:waypoint x="495.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="540.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow-send-to-end" id="BPMNEdge_flow-send-to-end">
+        <omgdi:waypoint x="645.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="690.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="390.0" y="127.0"></omgdi:waypoint>
+        <omgdi:waypoint x="390.0" y="189.0"></omgdi:waypoint>
+        <omgdi:waypoint x="592.0" y="189.0"></omgdi:waypoint>
+        <omgdi:waypoint x="592.0" y="135.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
