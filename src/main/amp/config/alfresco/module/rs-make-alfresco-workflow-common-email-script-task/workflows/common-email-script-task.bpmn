@@ -40,48 +40,48 @@
   <bpmndi:BPMNDiagram id="BPMNDiagram_commonEmailScriptTask">
     <bpmndi:BPMNPlane bpmnElement="commonEmailScriptTask" id="BPMNPlane_commonEmailScriptTask">
       <bpmndi:BPMNShape bpmnElement="startevent-common-email-script-task" id="BPMNShape_startevent-common-email-script-task">
-        <omgdc:Bounds height="35.0" width="35.0" x="120.0" y="90.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="60.0" y="90.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="servicetask-check-prerequisites" id="BPMNShape_servicetask-check-prerequisites">
-        <omgdc:Bounds height="55.0" width="105.0" x="200.0" y="80.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="140.0" y="80.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="endevent-common-email-script-task" id="BPMNShape_endevent-common-email-script-task">
-        <omgdc:Bounds height="35.0" width="35.0" x="690.0" y="90.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="610.0" y="90.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="exclusivegateway-delay" id="BPMNShape_exclusivegateway-delay">
-        <omgdc:Bounds height="40.0" width="40.0" x="370.0" y="87.0"></omgdc:Bounds>
+        <omgdc:Bounds height="40.0" width="40.0" x="310.0" y="87.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="timerintermediatecatchevent-send-email-delay" id="BPMNShape_timerintermediatecatchevent-send-email-delay">
-        <omgdc:Bounds height="35.0" width="35.0" x="460.0" y="90.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="390.0" y="90.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="servicetask-send" id="BPMNShape_servicetask-send">
-        <omgdc:Bounds height="55.0" width="105.0" x="540.0" y="80.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="460.0" y="80.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow-start-to-check-prerequisites" id="BPMNEdge_flow-start-to-check-prerequisites">
-        <omgdi:waypoint x="155.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="200.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="95.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="140.0" y="107.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow-delay-to-send-email-delay" id="BPMNEdge_flow-delay-to-send-email-delay">
-        <omgdi:waypoint x="410.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="460.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="350.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="390.0" y="107.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow-check-prerequisites-to-proceed" id="BPMNEdge_flow-check-prerequisites-to-proceed">
-        <omgdi:waypoint x="305.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="370.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="245.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="310.0" y="107.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow-delay-to-send" id="BPMNEdge_flow-delay-to-send">
-        <omgdi:waypoint x="495.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="540.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="425.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="460.0" y="107.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow-send-to-end" id="BPMNEdge_flow-send-to-end">
-        <omgdi:waypoint x="645.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="690.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="565.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="610.0" y="107.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
-        <omgdi:waypoint x="390.0" y="127.0"></omgdi:waypoint>
-        <omgdi:waypoint x="390.0" y="189.0"></omgdi:waypoint>
-        <omgdi:waypoint x="592.0" y="189.0"></omgdi:waypoint>
-        <omgdi:waypoint x="592.0" y="135.0"></omgdi:waypoint>
+        <omgdi:waypoint x="330.0" y="127.0"></omgdi:waypoint>
+        <omgdi:waypoint x="330.0" y="189.0"></omgdi:waypoint>
+        <omgdi:waypoint x="512.0" y="189.0"></omgdi:waypoint>
+        <omgdi:waypoint x="512.0" y="135.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
